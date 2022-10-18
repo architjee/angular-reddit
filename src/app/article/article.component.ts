@@ -1,5 +1,5 @@
-import { Component,HostBinding, OnInit } from '@angular/core';
-import {Article} from './article.model';
+import { Component, HostBinding,Input, OnInit } from '@angular/core';
+import { Article } from './article.model';
 
 @Component({
   selector: 'app-article',
@@ -9,22 +9,23 @@ import {Article} from './article.model';
 export class ArticleComponent implements OnInit {
 
   @HostBinding('attr.class') cssClass = 'row';
- article: Article;
- constructor() {
-  this.article = new Article('Angular', 'angular.io', 10);
- }
+  @Input() article: Article;
+  constructor() {
+   // We have already used @Input dectorator so this would be overriding the value passed as a parameter.
+   
+  }
 
- voteUp() {
- this.article.voteUp();
- return false;
- }
+  voteUp() {
+    this.article.voteUp();
+    return false;
+  }
 
- voteDown() {
- this.article.voteDown();
- return false;
- }
+  voteDown() {
+    this.article.voteDown();
+    return false;
+  }
 
- ngOnInit() {
- }
+  ngOnInit() {
+  }
 
 }
