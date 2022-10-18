@@ -10,14 +10,17 @@ export class AppComponent {
 
   constructor() {
     this.articles = [
-      new Article('Angular', 'angular.io', 10),
-      new Article('Fullstack', 'fullstack.io', 2),
-      new Article('Angular Homepage', 'angular.io', 1)
+      new Article('Angular', 'https://angular.io/foo', 10),
+      new Article('Fullstack', 'https://fullstack.io/foo', 2),
+      new Article('Angular Homepage', 'https://angular.io', 1)
     ];
   }
 
   addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean {
     console.log(`Adding article title: ${title.value} and link: ${link.value}`);
+    this.articles.push(new Article(title.value, link.value, 0));
+    title.value = ``;
+    link.value = ``;
     return false;
   }
 }
